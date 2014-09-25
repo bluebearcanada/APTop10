@@ -12,7 +12,10 @@
     get_template_part('templates/header');
   ?>
 
-  <div class="wrap container" role="document">
+  <div class="wrap container-fluid" role="document">
+    <?php if ( is_home() || is_page('4') ) : ?>
+      <?php get_template_part('templates/marquee'); ?>
+    <?php endif; ?>
     <div class="content row">
       <main class="main" role="main">
         <?php include roots_template_path(); ?>

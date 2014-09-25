@@ -39,6 +39,8 @@ function roots_scripts() {
 
   wp_enqueue_style('roots_css', get_template_directory_uri() . $assets['css'], false, null);
 
+  wp_enqueue_style('cloud_custom', get_template_directory_uri() . '/assets/css/ap.css', false);
+
   /**
    * jQuery is loaded using the same method from HTML5 Boilerplate:
    * Grab Google CDN's latest jQuery with a protocol relative URL; fallback to local if offline
@@ -102,3 +104,15 @@ function roots_google_analytics() { ?>
 if (GOOGLE_ANALYTICS_ID && (WP_ENV !== 'production' || !current_user_can('manage_options'))) {
   add_action('wp_footer', 'roots_google_analytics', 20);
 }
+
+/***** Add Custom Google Fonts to AP Theme *****/
+
+function load_google_fonts() {
+    wp_register_style('googleFontsMontserrat','http://fonts.googleapis.com/css?family=Montserrat:400,700');
+    wp_enqueue_style( 'googleFontsMontserrat'); 
+
+    wp_register_style('googleFontsQuicksand','http://fonts.googleapis.com/css?family=Quicksand:300,400,700');
+    wp_enqueue_style( 'googleFontsQuicksand');
+}
+
+add_action('wp_print_styles', 'load_google_fonts');
